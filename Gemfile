@@ -6,6 +6,7 @@ gem 'rails', '3.0.0.beta4'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'twitter'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -27,3 +28,5 @@ gem 'pg'
 # group :test do
 #   gem 'webrat'
 # end
+
+gem 'simple_geocoder', :git => 'git://github.com/tsenying/simple_geocoder.git'

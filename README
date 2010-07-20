@@ -1,3 +1,7 @@
+vendor name:string location:string web:string description:string following:integer followers:integer listed:integer
+
+location vendor_id:integer name:string latitude:float longitude:float
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create

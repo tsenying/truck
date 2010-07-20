@@ -1,5 +1,9 @@
 --- 
 dependencies: 
+  simple_geocoder: 
+    group: 
+    - :default
+    version: ">= 0"
   pg: 
     group: 
     - :default
@@ -8,6 +12,10 @@ dependencies:
     group: 
     - :default
     version: = 3.0.0.beta4
+  twitter: 
+    group: 
+    - :default
+    version: ">= 0"
 specs: 
 - rake: 
     version: 0.8.7
@@ -51,6 +59,16 @@ specs:
     version: 3.0.0.beta4
 - bundler: 
     version: 0.9.26
+- crack: 
+    version: 0.1.6
+- hashie: 
+    version: 0.2.1
+- httparty: 
+    version: 0.5.2
+- json: 
+    version: 1.1.9
+- oauth: 
+    version: 0.4.1
 - pg: 
     version: 0.9.0
 - thor: 
@@ -59,7 +77,18 @@ specs:
     version: 3.0.0.beta4
 - rails: 
     version: 3.0.0.beta4
-hash: cb7d69b6c9a258364b60865e69d113d2697b8866
+- simple_geocoder: 
+    version: 0.0.1
+    source: 0
+- yajl-ruby: 
+    version: 0.7.6
+- twitter: 
+    version: 0.9.8
+hash: 131530225466b3cd93c4770eb24692e1d2ae15e3
 sources: 
+- Git: 
+    uri: git://github.com/tsenying/simple_geocoder.git
+    git: git://github.com/tsenying/simple_geocoder.git
+    ref: 68b14b69fa03c9c8bcb8e93ddf944cfe19a289a2
 - Rubygems: 
     uri: http://rubygems.org
