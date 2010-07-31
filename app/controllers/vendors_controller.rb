@@ -1,4 +1,8 @@
 class VendorsController < ApplicationController
+  
+  def map
+  end
+  
   # GET /vendors
   # GET /vendors.xml
   def index
@@ -56,9 +60,20 @@ class VendorsController < ApplicationController
         # @vendor.listed = user.listed
         @vendor.tweets = user.statuses_count
         
-        # run location through geocoder and create a home location
+        # run location through geocoder 
+        # and create a Placemark in google map 
+        # and create a home location
         if latlng = SimpleGeocoder::Geocoder.new.find_location(user.location)
-          @vendor.locations << Location.new({:name => 'home', :location => user.location, :latitude => latlng['lat'], :longitude => latlng['lng']})
+          logger.debug "\n\n%%%%%lng=#{latlng['lng'].to_s}"
+          feature = gmap.create_feature(user.name, user.name, user.description, 
+            coordinates_hash = {:longitude => latlng['lng'].to_s, :latitude => latlng['lat'].to_s, :elevation => '0.0'})
+          logger.debug "\n\n%%%%%feature =#{feature.feed_entry}"
+          @vendor.locations << Location.new({:name => 'home',
+                                             :location => user.location,
+                                             :latitude => latlng['lat'],
+                                             :longitude => latlng['lng'],
+                                             :gmap_feature_url => feature.self_url}
+                                           )
         else
           logger.warn "failed to geocode location:#{user.location}"
         end

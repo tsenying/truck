@@ -6,6 +6,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :location
       t.float :latitude
       t.float :longitude
+      t.string :gmap_feature_url
 
       t.timestamps
     end

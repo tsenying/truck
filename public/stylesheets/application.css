@@ -1,3 +1,32 @@
+/* degrade gracefully for quirks mode browsers */
+/* http://code.google.com/apis/maps/documentation/javascript/tutorial.html */
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px }
+#map_canvas { height: 100% }
+
+/** Markup free clearing ==============================================================**/
+/* http://www.positioniseverything.net/easyclearing.html */
+.clear-block:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clear-block {
+  zoom: 1; /* trigger hasLayout in ie */
+  display: block;
+}
+
+#map #map_canvas {background: #eee;}
+
+#map #map_canvas {
+  width: 950px;
+  height: 500px;
+  margin-bottom: 5px;
+}
+
+/* auto generated */
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {

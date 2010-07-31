@@ -30,3 +30,5 @@ gem 'twitter'
 # end
 
 gem 'simple_geocoder', :git => 'git://github.com/tsenying/simple_geocoder.git'
+gem 'nokogiri'
+gem 'gdata'

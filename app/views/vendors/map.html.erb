@@ -1,0 +1,28 @@
+<div id="map" class="one-column layout clear-block">
+  <div id="map_canvas"></div>
+
+  <dl class="legend clear-block">
+    <dt>Country</dt>
+    <dd><img src="http://chart.apis.google.com/chart?chst=d_map_spin&amp;chld=.3|0|2598EF|8" alt="Blue Marker"></dd>
+    <dt>State/Province</dt>
+    <dd><img src="http://chart.apis.google.com/chart?chst=d_map_spin&amp;chld=.3|0|98D438|8" alt="Green Marker"></dd>
+    <dt>City</dt>
+    <dd><img src="http://chart.apis.google.com/chart?chst=d_map_spin&amp;chld=.3|0|F1A831|8" alt="Orange Marker"></dd>
+    <dt>School</dt>
+    <dd><img src="/images/casetta_yellow.png" width="20" height="20" alt="School House Icon"></dd>
+  </dl>
+</div>
+
+<% content_for :head do -%>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true">
+  <script>// Variables needed for schools_map
+    // set the default zoom
+    var zoom = <%= params[:zoom] || 10 %>;
+    // set the default lat/lng
+    <% (params[:lat] && params[:lng]) ? (lat = params[:lat]; lng = params[:lng]) : (lat=40.1; lng=-105.17) -%>
+    var lat = <%= lat %>;
+    var lng = <%= lng %>;
+  </script>
+  <%= javascript_include_tag 'map' %>
+<% end -%>
