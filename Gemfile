@@ -32,3 +32,5 @@ gem 'twitter'
 gem 'simple_geocoder', :git => 'git://github.com/tsenying/simple_geocoder.git'
 gem 'nokogiri'
 gem 'gdata'
+
+gem 'test-unit', '2.1.0', :group => :test

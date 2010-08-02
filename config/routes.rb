@@ -1,6 +1,7 @@
 Truck::Application.routes.draw do |map|
   
   match 'vendors/map' => 'vendors#map'
+  match 'locations/markers' => 'locations#markers'
   
   resources :vendors do
     resources :locations

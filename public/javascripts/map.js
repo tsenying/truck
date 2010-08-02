@@ -26,7 +26,7 @@ jQuery(function(){
   };
 
   map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-  // loadServerSideClusters(map);
+  loadMarkers(map);
 });
 
 // Deletes all markers in the array by removing references to them
@@ -60,54 +60,23 @@ function deleteOverlays(keysToIgnore) {
 
 var chart_counter = 0; // used to open multiple connections to get charts
 function get_marker_icon(item) {
-  if (item.type == "school") {
-    return '/images/casetta_yellow.png';
-  }
   // the performance improvement of loading charts through multiple connections doesn't work:
   // http://code.google.com/apis/chart/docs/making_charts.html#enhancements
   // var icon_url = "http://" + chart_counter + ".chart.apis.google.com/chart?chst=d_map_spin&chld=",
-  var color;
-  switch(item.type) {
-    case 'country':
-      color = '2598EF'; // globe light blue
-      break;
-    case 'province':
-      color = '98D438'; // globe light green
-      break;
-    case 'city':
-      color = 'F1A831'; // globe light orange
-      break;
-    default:
-      color = '2598EF'; // globe light blue
-      break;
-  }
+  var color = 'F1A831'; // globe light orang;
   var icon_url = "http://chart.apis.google.com/chart?chst=d_map_spin&chld=",
-      icon_options_499_up = "1.0|0|" + color + "|8|_|",
-      icon_options_100_499 = ".75|0|" + color + "|8|_|",
       icon_options_1_99 = ".5|0|" + color + "|8|_|";
   // var icon_url = "http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/";
   chart_counter++;
   if (chart_counter > 9) { chart_counter = 0; }
 
-  var marker_icon;
-  if (item.count > 80) {
-    marker_icon = icon_url + icon_options_499_up + item.count;
-  }
-  else if (item.count > 30) {
-    marker_icon = icon_url + icon_options_100_499 + item.count;
-  }
-  else if (item.count > 1) {
-    marker_icon = icon_url + icon_options_1_99 + item.count;
-  }
-  else { // school icon
-    marker_icon = icon_url + icon_options_1_99 + item.count;
-  }
+  var marker_icon = icon_url + icon_options_1_99 + 'Truck';
 
   // console.log("item count=" + item.count + ", latlng=" + item.lat + "," + item.lng + ", name=" + item.name + ", icon=" + marker_icon);
   return marker_icon;
 }
 
-function loadServerSideClusters(map) {
+function loadMarkers(map) {
   var infowindow = new google.maps.InfoWindow();
   function redo() {
     var center = map.getCenter(),
@@ -124,15 +93,13 @@ function loadServerSideClusters(map) {
 
     jQuery.ajax({
       type: "GET",
-      url: '/maps/show.json',
-      // url: '/schools/server_side_clustering.json',
+      url: '/locations/markers',
       dataType: 'json',
       data: args,
       error: function(xhr, status, error) {
         alert(status);
       },
       success: function(data){
-
         var markerKeys = []; // keeps track of keys to ignore when removing markers from map
 
         jQuery.each(data, function(index, item){

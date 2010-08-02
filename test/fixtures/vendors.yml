@@ -3,17 +3,19 @@
 one:
   name: MyString
   location: MyString
-  web: MyString
+  url: MyString
   description: MyString
   following: 1
   followers: 1
   listed: 1
+  tweets: 1
 
 two:
   name: MyString
   location: MyString
-  web: MyString
+  url: MyString
   description: MyString
   following: 1
   followers: 1
   listed: 1
+  tweets: 1
