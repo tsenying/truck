@@ -1,5 +1,10 @@
 Truck::Application.routes.draw do |map|
-  
+  get "user_sessions/new", :as => "login"
+  get "user_sessions/destroy", :as => "logout"
+
+  resources :users
+  resources :user_sessions
+
   match 'vendors/map' => 'vendors#map'
   match 'locations/markers' => 'locations#markers'
   
@@ -8,6 +13,8 @@ Truck::Application.routes.draw do |map|
   end
   
   resources :locations
+  
+  root :to => "vendors#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,7 +66,6 @@ Truck::Application.routes.draw do |map|
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-  root :to => "vendors#index"
 
   # See how all your routes lay out with "rake routes"
 

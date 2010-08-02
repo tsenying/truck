@@ -18,6 +18,10 @@ body { height: 100%; margin: 0px; padding: 0px }
   display: block;
 }
 
+#user_nav {
+  float: right;
+}
+
 #map #map_canvas {background: #eee;}
 
 #map #map_canvas {

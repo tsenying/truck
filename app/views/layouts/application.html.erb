@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TweeTruck</title>
-  <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "jquery-1.4.1.min", "rails" %>
-  <%= csrf_meta_tag %>
+  <head>
+    <title>TweeTruck</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "jquery-1.4.1.min", "rails" %>
+    <%= csrf_meta_tag %>
   
-  <%= yield :head %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+    <%= yield :head %>
+  </head>
+  <body>
+    <div id="header" class="clear-block">
+      <div id="user_nav">
+        <% if current_user %>
+          <%= link_to "Edit Profile", edit_user_path(current_user) %> |
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Register", new_user_path %> | 
+          <%= link_to "Login", login_path %>
+        <% end %>
+      </div>
+    </div>
+    <div id="main" class="clear-block">
+      <%= yield %>
+    </div>
+  </body>
 </html>
