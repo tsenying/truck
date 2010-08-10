@@ -18,7 +18,8 @@ class VendorsControllerTest < ActionController::TestCase
 
   test "should create vendor" do
     assert_difference('Vendor.count') do
-      post :create, :vendor => @vendor.attributes
+      @vendor.name = "should create vendor" # name has to be unique
+      results = post :create, :vendor => @vendor.attributes
     end
 
     assert_redirected_to vendor_path(assigns(:vendor))
@@ -36,6 +37,7 @@ class VendorsControllerTest < ActionController::TestCase
 
   test "should update vendor" do
     put :update, :id => @vendor.to_param, :vendor => @vendor.attributes
+    puts response.inspect
     assert_redirected_to vendor_path(assigns(:vendor))
   end
 
