@@ -37,7 +37,6 @@ class VendorsControllerTest < ActionController::TestCase
 
   test "should update vendor" do
     put :update, :id => @vendor.to_param, :vendor => @vendor.attributes
-    puts response.inspect
     assert_redirected_to vendor_path(assigns(:vendor))
   end
 
