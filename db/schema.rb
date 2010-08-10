@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20100802210220) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
+    t.integer  "roles_mask"
     t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"

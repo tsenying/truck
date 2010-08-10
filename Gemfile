@@ -29,11 +29,13 @@ gem 'twitter'
 #   gem 'webrat'
 # end
 
+# rails 3 working fork 
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+
+gem 'cancan'
+
 gem 'simple_geocoder', :git => 'git://github.com/tsenying/simple_geocoder.git'
 gem 'nokogiri'
 gem 'gdata'
-
-# rails 3 working fork 
-gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 
 gem 'test-unit', '2.1.0', :group => :test

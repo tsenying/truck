@@ -38,5 +38,5 @@
 <h3>Locations</h3>
 <%= render(:partial => "locations/location", :collection => @vendor.locations) %>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+<% if can? :edit, @vendor %><%= link_to 'Edit', edit_vendor_path(@vendor) %> | <% end %>
+<%= link_to 'Vendor List', vendors_path %>
