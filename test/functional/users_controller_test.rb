@@ -2,6 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
+    activate_authlogic
     @user = users(:one)
   end
 
@@ -31,16 +32,19 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
+    UserSession.create(users(:one))
     get :edit, :id => @user.to_param
     assert_response :success
   end
 
   test "should update user" do
+    UserSession.create(users(:one))
     put :update, :id => @user.to_param, :user => @user.attributes
     assert_redirected_to user_path(assigns(:user))
   end
 
   test "should destroy user" do
+    UserSession.create(users(:admin))
     assert_difference('User.count', -1) do
       delete :destroy, :id => @user.to_param
     end
